@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block top_menu %}
+<li><a href="{% url login_app.views.loginView %}">Logout</a></li>
+<li><a href="/profile/?user_id={{ user_id }}">My Profile</a></li>
+<li><a href="/profile/teach/?user_id={{ user_id }}">Teach</a></li>
+<li><a href="/profile/learn/?user_id={{ user_id }}">Learn</a></li>
+{% endblock %}
+
+{% block mid_content %}
+<h3 style="padding-top:20px">Teaching Center</h3>
+<h4 style="padding-top:20px">Select a Language You Want to Teach:</h4>
+	
+<form name="jump" class="center">
+	<label for="id_language">Language</label>: 
+	<select id="langSelect" onchange="location = 'video/?user_id={{ user_id }}&language=' + this.options[this.selectedIndex].value;">
+	    <option>Please select</option>
+	    {% for language in language_list %}
+	    	 <option value="{{ language.split|join:'_' }}"> {{ language }}</option>	
+	    {% endfor %}			   			    
+	</select>	
+</form>	
+
+
+
+{% endblock %}	
+
+{% block status_content %}
+<strong><p> {{ status_msg }}  </p></strong>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block top_menu %}
+	<li><a href="{% url login_app.views.loginView %}">Login</a></li>
+	<li><a href="{% url register_app.views.registerView %}">Register</a></li>
+{% endblock %}
+
+{% block mid_content %}
+	<form action="/register/" method="post">{% csrf_token %}
+	
+		{% for field in form %}
+			<p>{{ field.label_tag }}: {{ field }}</p>
+			{{ field.errors }}
+		{% endfor %}
+		
+		<input type="submit" value="Register">
+	</form>	
+{% endblock %}
+
+{% block status_content %} 	
+	<strong><p> {{ status_msg }}  </p></strong>
+{% endblock %}

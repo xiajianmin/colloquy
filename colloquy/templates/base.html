@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>Colloquy!</title>
+		<meta name="description" content="" />
+		<meta name="author" content="ACHIRA" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="stylesheet" href="http://www.maxdesign.com.au/wp-content/themes/maxdesign/stylesheets/sample.css" type="text/css" media="screen">
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		{% block head %}{% endblock %}
+		{% block scripts %}{% endblock %}
+	</head>
+
+	<body>
+		<div id="layout-three-liquid">
+			
+			<div id="container">
+				<div id="header">
+					<h1>Colloquy: Language Learning Simplified</h1>
+				</div>
+				<div id="navigation">
+					<ul>
+					<li><a href="{% url colloquy.views.indexView %}">Home</a></li>
+					{% block top_menu %}{% endblock %}	
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact us</a></li>
+					</ul>
+				</div>
+				
+				<div id="content-container1">
+					
+					<div id="content-container2">
+						<div id="section-navigation">
+							{% block left_menu %}{% endblock %}
+						</div>
+						
+						<div id="content">
+							{% block mid_content %}{% endblock %}	
+							<br><br><br>
+							{% block status_content %}{% endblock %}						
+						</div>
+						
+						<div id="aside">
+							{% block left_content %}{% endblock %}
+						</div>
+		
+						<div id="footer">Copyright &copy; Colloquy, 2013</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+			
+		</div>		
+	</body>
+</html>

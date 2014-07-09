@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block top_menu %}
+	<li><a href="{% url login_app.views.loginView %}">Login</a></li>
+	<li><a href="{% url register_app.views.registerView %}">Register</a></li>
+{% endblock %}
+
+{% block left_menu %}{% endblock %}
+
+{% block mid_content %}
+	<br><h2>Welcome to Colloquy!</h2><br>
+	<img src= "{{ STATIC_URL }}logo.jpg" alt="Page Not Found!"/>	
+{% endblock %}
+
+{% block left_content %}{% endblock %}

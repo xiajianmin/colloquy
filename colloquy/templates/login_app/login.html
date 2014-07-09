@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block top_menu %}
+<li><a href="{% url login_app.views.loginView %}">Login</a></li>
+<li><a href="{% url register_app.views.registerView %}">Register</a></li>
+{% endblock %}
+
+{% block mid_content %}    
+	<form action="/login/" method="post">{% csrf_token %}
+		
+		<p> E-mail:
+			<input type="text" name="email" /><br />
+		</p>
+		<p> Password:
+			<input type="password" name="password"/><br />	
+		</p>
+		<input type="submit" value="Log In">
+	</form>
+{% endblock %}
+
+{% block status_content %} 
+	
+	<strong><p> {{ status_msg }}  </p></strong>
+	
+	<!--<{% if valid_user != None %}
+		p> Sorry incorrect username or email! If you don't have an account please register. </p> 
+	{% elif reg_success %}
+		<p> Registration successful! Please login now. </p>
+	{% endif %}-->
+	
+{% endblock %}

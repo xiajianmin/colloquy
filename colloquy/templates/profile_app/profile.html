@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block top_menu %}
+<li><a href="{% url login_app.views.loginView %}">Logout</a></li>
+<li><a href="/profile/?user_id={{ user_id }}">My Profile</a></li>
+<li><a href="/profile/teach/?user_id={{ user_id }}">Teach</a></li>
+<li><a href="/profile/learn/?user_id={{ user_id }}">Learn</a></li>
+{% endblock %}
+
+{% block left_menu %}
+	<div style="padding-top:20px">	
+		<h4>Profile Options</h4>	
+		<form action="/profile/language/?user_id={{ user_id }}" method="post">{% csrf_token %}			
+			<input type="submit" name="language_options" value="Language Center">	
+		</form>	
+	</div>
+			
+	<div style="padding-top:10px" >			
+		<form action="/profile/delete/" method="post">{% csrf_token %}	
+			<input type="hidden" name="user_id" value="{{ user_id }}">		
+			<input type="submit" name="delete_profile" value="Delete Profile">	
+		</form>	
+	</div>		
+	
+	<div style="padding-top:10px" >			
+		<form action="/profile/video/?user_id={{ user_id }}" method="post">{% csrf_token %}						
+			<input type="submit" name="video" value="Video">	
+		</form>	
+	</div>		
+{% endblock %}
+
+{% block mid_content %} 
+
+	<h3 style="padding-top:20px">{{ first_name }}'s Profile </h3>
+	
+	<div>
+		<img width="200" height="200" alt="profile_pic" src= "{{ image }}"  /> <br>
+		<strong><a>Name : </a></strong>	{{ first_name }} {{ last_name }}<br>
+		<strong><a>Sex : </a></strong>	{{ sex }}<br>	
+		<strong><a>Date of Birth : </a></strong>	{{ dob }}<br>
+		<strong><a>E-mail : </a></strong>	{{ email }}<br>
+		
+	</div>
+		
+		
+	<div style="padding-top:20px">
+		<h4>Edit Profile</h4>
+		
+		<form action="/profile/updated/" name="update_profile" method="post">{% csrf_token %}
+			
+			<p> E-mail:
+				<input type="text" name="email" />		
+				<input type="submit" value="Update">
+				<input type="hidden" name="user_id" value="{{ user_id }}">
+			</p>
+		</form>	
+	</div>	
+	
+	<div style="padding-top:20px">
+		<h4>Interests</h4>	
+	</div>	
+
+
+
+
+{% endblock %}
+{% block left_content %}{% endblock %}
